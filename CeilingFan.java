@@ -10,11 +10,11 @@ public class CeilingFan {
     
     // constants
     final int FANOFF = 0; // fan speed settings
-    final int FANSPEED1 = 1;
-    final int FANSPEED2 = 2;
-    final int FANSPEED3 = 3;
+    final int FANSPEEDLOW = 1;
+    final int FANSPEEDMED = 2;
+    final int FANSPEEDHIGH = 3;
 
-    final boolean CLOCKWISE = true; // fan direction
+    final boolean CLOCKWISE = true; // fan direction, might change these to forward / reverse
     final boolean COUNTERCLOCKWISE = false;
 
 
@@ -40,6 +40,28 @@ public class CeilingFan {
         this.rotationDirection = direction;
     }
 
+    abstract class PullCord {
+
+        // maybe attribute here for cord length
+
+        abstract void Pull();
+    }  
+
+    class DirectionPullCord extends PullCord {
+
+        public void Pull() {
+
+        }
+    }
+
+    class SpeedPullCord extends PullCord {
+
+        public void Pull() {
+
+        }
+    }
+
+
 
     // constructor
     // note: assumed default values
@@ -51,6 +73,10 @@ public class CeilingFan {
 
     public static void main(String[] args) {
         CeilingFan fan = new CeilingFan();
+
+        CeilingFan.DirectionPullCord directionCord = fan.new DirectionPullCord();
+        CeilingFan.SpeedPullCord speedCord = fan.new SpeedPullCord();
+
 
     }
 
