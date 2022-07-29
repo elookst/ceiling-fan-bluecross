@@ -6,6 +6,7 @@
  *                  The fan possesses three different speeds or can be turned off completely.
  * ASSUMPTIONS  :   The fan starts in OFF mode and counterclockwise default direction.
  */
+
 public class CeilingFan {
     
     // constants
@@ -50,14 +51,21 @@ public class CeilingFan {
     class DirectionPullCord extends PullCord {
 
         public void Pull() {
-
+            setDirection(!(getDirection()));
         }
     }
 
     class SpeedPullCord extends PullCord {
 
         public void Pull() {
-
+            if (getSpeed() != FANSPEEDHIGH)
+            {
+                setSpeed(getSpeed() + 1);
+            }
+            else
+            {
+                setSpeed(FANOFF);
+            }
         }
     }
 
@@ -77,7 +85,7 @@ public class CeilingFan {
         CeilingFan.DirectionPullCord directionCord = fan.new DirectionPullCord();
         CeilingFan.SpeedPullCord speedCord = fan.new SpeedPullCord();
 
-
+        
     }
 
 }
