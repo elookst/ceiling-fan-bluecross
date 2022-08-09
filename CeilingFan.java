@@ -4,13 +4,16 @@
  * PURPOSE      :   This class models the attributes and methods of a ceiling fan. The class contains
  *                  two PullCord objects, which can alter the speed or direction that the fan may be rotating.
  *                  The fan possesses three different speeds or can be turned off completely.
- * ASSUMPTIONS  :   The fan starts in OFF mode and forward default direction.
+ * ASSUMPTIONS  :   The fan starts in OFF mode and forward default direction. Assumed forward
+ *                  direction based on email description and not clockwise / counterclockwise.
+ * ADDITIONAL NOTES :   I did not include any testing code or a user interface for this class.
  */
 
 public class CeilingFan {
     
     // constants
     // the constants here are used to set fan speed settings and fan directions
+
     final int FANOFF = 0; 
     final int FANSPEEDLOW = 1;
     final int FANSPEEDMED = 2;
@@ -113,49 +116,7 @@ public class CeilingFan {
         CeilingFan.DirectionPullCord directionCord = fan.new DirectionPullCord();
         CeilingFan.SpeedPullCord speedCord = fan.new SpeedPullCord();
 
-        // The code below used for testing purposes only.
-
-        fan.DisplayProperties(); // direction fwd, speed 0
-        
-        directionCord.Pull();
-        fan.DisplayProperties(); // direction rev, speed 0
-
-        directionCord.Pull();
-        fan.DisplayProperties(); // direction fwd, speed 0
-
-        speedCord.Pull();
-        fan.DisplayProperties(); // direction fwd, speed 1
-        
-        speedCord.Pull();
-        fan.DisplayProperties(); // direction fwd, speed 2
-        
-        speedCord.Pull();
-        directionCord.Pull(); 
-        fan.DisplayProperties(); // direction rev, speed 3
-        
-        speedCord.Pull();
-        fan.DisplayProperties(); // direction rev, speed 0
-        speedCord.Pull();
-        fan.DisplayProperties(); // direction rev, speed 1
-
         
     }
-
-    public void DisplayProperties() {
-        System.out.print("Direction:");
-
-        if (this.getDirection())
-        {
-            System.out.println("FORWARD");
-        }
-        else
-        {
-            System.out.println("REVERSE");
-        }
-        System.out.print("Speed:");
-        System.out.println(this.getSpeed());
-        System.out.println("===========");
-    }
-
 
 }
